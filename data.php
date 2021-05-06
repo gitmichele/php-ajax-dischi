@@ -74,6 +74,39 @@
         ]
     ];
 
+    $genreList = [];
+    foreach ($db as $album) {
+        
+        $genre = $album['genre'];
 
-    echo json_encode($db);
+        if (in_array($genre, $genreList) === false){
+
+            $genreList []= $genre;
+        };
+    }
+
+    $selGenre = $_GET['genre'];
+    function newList($genre, $original_db){
+
+        if ($genre == ""){
+
+            return $original_db;
+        }
+        else{
+            
+            $new_db = [];
+
+            foreach ($original_db as $album) {
+                
+                if ($genre == $album['genre']){
+
+                    $new_db []= $album;
+                };
+            };
+
+            return $new_db;
+        };
+    };
+
+    echo json_encode(array($db, $genreList, newList($selGenre, $db)));
 ?>

@@ -24,6 +24,15 @@
     <body>
 
         <div id="app">
+            <header>
+                <h2>i tuoi album</h2>
+                <select v-model="selected" @change="onChange()">
+                    <option selected value="">All</option>
+                    <option v-for="genre in genreList" :value="genre">
+                        {{ genre }}
+                    </option>
+                </select>
+            </header>
 
             <div class="slideshow-container">
                 <div class="album-container"
