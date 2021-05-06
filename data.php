@@ -86,6 +86,7 @@
     }
 
     $selGenre = $_GET['genre'];
+    $callNum = $_GET['callNum'];
     function newList($genre, $original_db){
 
         if ($genre == ""){
@@ -108,5 +109,13 @@
         };
     };
 
-    echo json_encode(array($db, $genreList, newList($selGenre, $db)));
+
+
+    if ($callNum == 1){
+
+        echo json_encode(array($db, $genreList));
+    }else{
+
+        echo json_encode(newList($selGenre, $db));
+    };
 ?>

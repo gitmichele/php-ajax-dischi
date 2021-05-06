@@ -12,13 +12,13 @@ function initVue() {
         mounted() {
 
             axios.get('data.php', {params: {
-                genre: this.selected
+                genre: this.selected,
+                callNum: 1
             }})
             .then(data => {
 
                 this.albums = data.data[0];
                 this.genreList = data.data[1];
-                console.log(data);
             })
             .catch(e => {
 
@@ -29,14 +29,13 @@ function initVue() {
 
             onChange: function() {
 
-                console.log(this.selected);
-
                 axios.get('data.php', {params: {
-                    genre: this.selected
+                    genre: this.selected,
+                    callNum: 2 
                 }})
                 .then(data => {
     
-                    this.albums = data.data[2];
+                    this.albums = data.data;
                 })
                 .catch(e => {
     
